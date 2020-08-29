@@ -1,7 +1,10 @@
 Django Sendgrid Tracking
 ========================
 
-Sendgrid Mail tracking for Django, store sendgrid tracking info into django models.
+|codecov| |Python Versions| |PyPI Version| |MIT licensed|
+
+
+**Sendgrid Mail tracking for Django, store sendgrid tracking info into django models.**
 
 This library allows to track the email sent using Sendgrid by storing information collected from a webhook into django models.
 
@@ -146,4 +149,11 @@ License
 
 .. _CONTRIBUTING: https://github.com/MattFanto/django-sendgrid-tracking/blob/master/CONTRIBUTING.md
 .. _The MIT License (MIT): https://github.com/MattFanto/django-sendgrid-tracking/blob/master/LICENSE.md
-
+.. |codecov| image:: https://codecov.io/gh/MattFanto/django-sendgrid-tracking/branch/master/graph/badge.svg
+   :target: https://codecov.io/gh/MattFanto/django-sendgrid-tracking
+.. |Python Versions| image:: https://img.shields.io/pypi/pyversions/django-sendgrid-tracking.svg
+   :target: https://pypi.org/project/django-sendgrid-tracking
+.. |PyPI Version| image:: https://img.shields.io/pypi/v/django-sendgrid-tracking.svg
+   :target: https://pypi.org/project/django-sendgrid-tracking
+.. |MIT licensed| image:: https://img.shields.io/badge/license-MIT-blue.svg
+   :target: ./LICENSE.md
