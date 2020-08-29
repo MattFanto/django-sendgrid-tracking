@@ -1,5 +1,6 @@
 # django-sendgrid-tracking
-Codecov Global Python Uploader
+
+Sendgrid Mail tracking for Django, store sendgrid tracking info into django models. 
 
 This library allows to track the email sent using Sendgrid by storing information collected from a webhook into django models
 

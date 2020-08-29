@@ -4,11 +4,11 @@ setup(
     name='django-sendgrid-tracking',
     version='0.1',
     packages=['django_sendgrid_tracking', 'django_sendgrid_tracking.migrations'],
-    url='',
+    url='https://github.com/MattFanto/django-sendgrid-tracking',
     license='MIT',
     author='Mattia Fantoni',
     author_email='mattia.fantoni@gmail.com',
-    description='Send email in Django with Sendgrid',
+    description='Sendgrid Mail tracking for Django, store sendgrid tracking info into django models.',
     install_requires=[
         "Django>=1.11",
         "pybars3",
