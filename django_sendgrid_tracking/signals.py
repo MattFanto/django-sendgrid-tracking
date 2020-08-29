@@ -1,4 +1,3 @@
-import django.dispatch
 from sendgrid_backend.signals import sendgrid_email_sent
 
 from django_sendgrid_tracking.mail import create_send_email
