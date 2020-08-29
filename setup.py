@@ -10,7 +10,7 @@ setup(
     author_email='mattia.fantoni@gmail.com',
     description='Send email in Django with Sendgrid',
     install_requires=[
-        "Django>=1.10",
+        "Django>=1.11",
         "pybars3",
         "django-extensions",
         "django-sendgrid-v5>=0.9.0"
