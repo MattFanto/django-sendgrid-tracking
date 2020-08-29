@@ -145,5 +145,5 @@ License
 
 
 .. _CONTRIBUTING: https://github.com/MattFanto/django-sendgrid-tracking/blob/master/CONTRIBUTING.md
-.. _The MIT License (MIT): https://github.com/MattFanto/django-sendgrid-tracking/blob/master/LICENSE
+.. _The MIT License (MIT): https://github.com/MattFanto/django-sendgrid-tracking/blob/master/LICENSE.md
 
