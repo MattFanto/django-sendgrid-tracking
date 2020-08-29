@@ -40,9 +40,10 @@ Install package
 ---------------
 
 Install the library with pip
+
 .. code:: bash
 
-    pip install django-sendgrid-tracking
+    $ pip install django-sendgrid-tracking
 
 
 Quick Start
@@ -62,6 +63,13 @@ To enable django_sendgrid_tracking in your project you to add it to INSTALLED_AP
         'django_sendgrid_tracking'
         ...
     )
+
+Run django migrate to create django-sendgrid-tracking related models
+
+.. code:: bash
+
+    $ python manage.py migrate
+
 
 In addition to that you need to expose for sendgrid the webhook endpoint
 
