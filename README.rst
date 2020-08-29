@@ -91,7 +91,8 @@ Enable sendgrid
 Now you need to provide this endpoint URL to Sendgrid from the console
 (`Setting -> Mail Settings -> Event WebHook <https://app.sendgrid.com/settings/mail_settings>`__):
 
-.. figure:: docs/img/sendgrid-webhook-conf.png
+.. image:: https://raw.githubusercontent.com/MattFanto/django-sendgrid-tracking/master/docs/img/sendgrid-webhook-conf.png
+    :alt: sendgrid-webhook-configuration
 
 
 In this case your webhook would be available at http://www.mywebsite.com/sendgrid_webhook/
@@ -123,8 +124,10 @@ Another use case is in the case of referral program we can show the user the sta
 
 e.g.
 
-.. figure:: docs/img/use-case-referral.png
+.. image:: https://raw.githubusercontent.com/MattFanto/django-sendgrid-tracking/master/docs/img/use-case-referral.png
+    :alt: use-case-referral
 
+(example from https://www.omologherifiuti.it)
 
 About
 ======

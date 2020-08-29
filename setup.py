@@ -1,6 +1,6 @@
 import io
 import os
-from distutils.core import setup
+from setuptools import setup, find_packages
 
 __version__ = None
 with open('django_sendgrid_tracking/version.py') as f:
@@ -12,7 +12,7 @@ long_description = io.open(os.path.join(dir_path, 'README.rst'), encoding='utf-8
 setup(
     name='django-sendgrid-tracking',
     version=str(__version__),
-    packages=['django_sendgrid_tracking', 'django_sendgrid_tracking.migrations'],
+    packages=find_packages(exclude=["temp*.py", "test"]),
     url='https://github.com/MattFanto/django-sendgrid-tracking',
     license='MIT',
     author='Mattia Fantoni',
@@ -42,7 +42,5 @@ setup(
         "Programming Language :: Python :: 3.6",
         "Topic :: Communications :: Email",
         "Topic :: Software Development :: Libraries :: Python Modules",
-        "Topic :: Communications :: Email :: Tracking",
-        "Topic :: Communications :: Email :: HTML Template",
     ],
 )
