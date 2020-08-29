@@ -1,0 +1,1 @@
+default_app_config = 'django_sendgrid_tracking.apps.DjangoSendgridEmailConfig'

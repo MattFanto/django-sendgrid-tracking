@@ -1,0 +1,7 @@
+# Install django_sendgrid_email
+-e .
+
+nose
+tox
+coverage
+codecov

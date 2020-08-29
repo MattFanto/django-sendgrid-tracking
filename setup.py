@@ -1,0 +1,37 @@
+from distutils.core import setup
+
+setup(
+    name='django-sendgrid-tracking',
+    version='0.1',
+    packages=['django_sendgrid_tracking', 'django_sendgrid_tracking.migrations'],
+    url='',
+    license='MIT',
+    author='Mattia Fantoni',
+    author_email='mattia.fantoni@gmail.com',
+    description='Send email in Django with Sendgrid',
+    install_requires=[
+        "Django>=1.10",
+        "pybars3",
+        "django-extensions",
+        "django-sendgrid-v5>=0.9.0"
+    ],
+    classifiers=[
+        "Environment :: Web Environment",
+        "Framework :: Django",
+        "Intended Audience :: Developers",
+        "License :: OSI Approved :: MIT License",
+        "Natural Language :: English",
+        "Operating System :: OS Independent",
+        "Programming Language :: Python",
+        "Programming Language :: Python :: 2",
+        "Programming Language :: Python :: 2.7",
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.4",
+        "Programming Language :: Python :: 3.5",
+        "Programming Language :: Python :: 3.6",
+        "Topic :: Communications :: Email",
+        "Topic :: Software Development :: Libraries :: Python Modules",
+        "Topic :: Communications :: Email :: Tracking",
+        "Topic :: Communications :: Email :: HTML Template",
+    ],
+)
