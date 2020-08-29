@@ -1,17 +1,17 @@
+import io
 import os
 from distutils.core import setup
 
-long_description = """
-django-extensions provides a set of utilities to store in django db model tracking information sent by Sendgrid. 
-See the project page for more information:
-  https://github.com/MattFanto/django-sendgrid-tracking"""
-if os.path.isfile("README.rst"):
-    with open("README.rst") as f:
-        long_description = f.read()
+__version__ = None
+with open('django_sendgrid_tracking/version.py') as f:
+    exec(f.read())
+
+dir_path = os.path.abspath(os.path.dirname(__file__))
+long_description = io.open(os.path.join(dir_path, 'README.rst'), encoding='utf-8').read()
 
 setup(
     name='django-sendgrid-tracking',
-    version='0.1',
+    version=str(__version__),
     packages=['django_sendgrid_tracking', 'django_sendgrid_tracking.migrations'],
     url='https://github.com/MattFanto/django-sendgrid-tracking',
     license='MIT',
