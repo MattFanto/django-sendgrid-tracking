@@ -5,3 +5,4 @@ nose
 tox
 coverage
 codecov
+flake8

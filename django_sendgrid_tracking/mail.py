@@ -23,5 +23,3 @@ def create_send_email(sender, message, fail_flag, **kwargs):
             return
         for category in categories:
             sent_mail.category_code.add(MailCategory.objects.get_or_create(category_code=category)[0])
-
-

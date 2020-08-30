@@ -127,12 +127,14 @@ class SentMail(models.Model):
 
 SG_EVENTS = (
     ('processed', 'Message has been received and is ready to be delivered.'),
-    ('dropped',
-     'You may see the following drop reasons: Invalid SMTPAPI header, Spam Content (if Spam Checker app is enabled), Unsubscribed Address, Bounced Address, Spam Reporting Address, Invalid, Recipient List over Package Quota'),
+    ('dropped', 'You may see the following drop reasons: Invalid SMTPAPI header, '
+                'Spam Content (if Spam Checker app is enabled), Unsubscribed Address, '
+                'Bounced Address, Spam Reporting Address, Invalid, Recipient List over Package Quota'),
     ('delivered', 'Message has been successfully delivered to the receiving server.'),
     ('deferred', 'Receiving server temporarily rejected the message.'),
     ('bounce',
-     'Receiving server could not or would not accept the message. If a recipient has previously unsubscribed from your emails, the message is bounced.'),
+     'Receiving server could not or would not accept the message. '
+     'If a recipient has previously unsubscribed from your emails, the message is bounced.'),
     ('open', 'User opened the message'),
     ('click', 'User clicked on the message link'),
     ('spamreport', 'Recipient marked message as spam.')
