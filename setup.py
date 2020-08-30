@@ -1,17 +1,23 @@
 import io
 import os
+import sys
+
 from setuptools import setup, find_packages
 
-__version__ = None
-with open('django_sendgrid_tracking/version.py') as f:
-    exec(f.read())
+from django_sendgrid_tracking import __version__ as version
 
 dir_path = os.path.abspath(os.path.dirname(__file__))
 long_description = io.open(os.path.join(dir_path, 'README.rst'), encoding='utf-8').read()
 
+if sys.argv[-1] == 'tag':
+    print('Tagging the version on git:')
+    os.system("git tag -a %s -m 'version %s'" % (version, version))
+    os.system('git push --tags')
+    sys.exit()
+
 setup(
     name='django-sendgrid-tracking',
-    version=str(__version__),
+    version=version,
     packages=find_packages(exclude=["temp*.py", "test"]),
     url='https://github.com/MattFanto/django-sendgrid-tracking',
     license='MIT',
