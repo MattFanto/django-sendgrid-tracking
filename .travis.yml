@@ -8,6 +8,7 @@ install: pip install -r dev-requirements.txt
 script:
 - tox
 - flake8 django_sendgrid_tracking/
-env:
-  global:
-  - DJANGO_SETTINGS_MODULE=tests.settings
+
+after_success:
+  - codecov
+
