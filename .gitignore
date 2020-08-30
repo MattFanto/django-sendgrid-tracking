@@ -91,3 +91,6 @@ ENV/
 /django_sendgrid_tracking.egg-info/
 /db.sqlite3
 /MANIFEST
+/docs/_build/
+/docs/_static/
+/docs/_templates/

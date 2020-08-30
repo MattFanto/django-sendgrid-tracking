@@ -5,5 +5,5 @@ class DjangoSendgridEmailConfig(AppConfig):
     name = 'django_sendgrid_tracking'
 
     def ready(self):
-        print('Ready')
         from django_sendgrid_tracking import signals
+        print('Imported %s' % signals.__name__)

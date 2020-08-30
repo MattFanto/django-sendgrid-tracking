@@ -40,10 +40,12 @@ def process_sg_notification(sg_notification, file_name):
                 sg_notification['category'] = [sg_notification['category']]
             sn.category_code.set(MailCategory.objects.filter(category_code__in=sg_notification['category']))
         else:
-            logger.warning('No category in django_sendgrid_tracking:event_hooks, request body file_name: %s' % file_name)
+            logger.warning('No category in django_sendgrid_tracking:event_hooks, '
+                           'request body file_name: %s' % file_name)
 
     except Exception as e:
-        logger.error('exception raised in django_sendgrid_tracking:event_hooks, request body file_name: %s' % file_name)
+        logger.error('Generic exception raised in django_sendgrid_tracking:event_hooks (%s) '
+                     'request body file_name: %s' % (e, file_name))
 
 
 @csrf_exempt
@@ -64,5 +66,3 @@ def event_hooks(request):
             with transaction.atomic():
                 process_sg_notification(sg_notification, file_name)
     return HttpResponse()
-
-
