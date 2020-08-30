@@ -1,10 +1,14 @@
 sudo: false
 language: python
 python:
-  - 3.6
-  - 3.7
-  - 3.8
+- 3.6
+- 3.7
+- 3.8
 install: pip install -r dev-requirements.txt
 script:
-  - tox
-  - flake8 django_sendgrid_tracking/
+- tox
+- flake8 django_sendgrid_tracking/
+
+after_success:
+  - codecov
+

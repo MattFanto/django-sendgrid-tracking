@@ -123,9 +123,9 @@ STATIC_URL = '/static/'
 # Real Lib settings
 #########################
 
-SENDGRID_API_KEY = os.environ['SENDGRID_API_KEY']
+SENDGRID_API_KEY = os.environ.get('SENDGRID_API_KEY', 'fake_one')
 
 EMAIL_BACKEND = 'sendgrid_backend.mail.SendgridBackend'
 DATALAKE_STORAGE = 'tests.storages.LocalDataLakeStorage'
-DEFAULT_FROM_EMAIL = os.environ['DEFAULT_FROM_EMAIL']
+DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', 'webmaster@email.com')
 
