@@ -15,6 +15,18 @@ if sys.argv[-1] == 'tag':
     os.system('git push --tags')
     sys.exit()
 
+if sys.argv[-1] == 'publish':
+    try:
+        import wheel
+        print('Wheel version: ', wheel.__version__)
+    except ImportError:
+        print('Wheel library missing. Please run "pip install wheel"')
+        sys.exit()
+    os.system('python setup.py sdist upload')
+    os.system('python setup.py bdist_wheel upload')
+    sys.exit()
+
+
 setup(
     name='django-sendgrid-tracking',
     version=version,
