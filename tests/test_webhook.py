@@ -1,12 +1,14 @@
 import json
 
-from django.test import TestCase
+from django.test import TestCase, override_settings
 from django.test import Client
 from django.urls import reverse
 
 from django_sendgrid_tracking import views
 
 from django_sendgrid_tracking.models import SendGridNotification, SentMail, Mail, MailCategory
+from django_sendgrid_tracking.views import dump_raw_message_to_storage
+from tests.storages import LocalDataLakeStorage
 
 
 class SendgridWebHookTestCase(TestCase):
@@ -199,6 +201,18 @@ class SendgridWebHookTestCase(TestCase):
         qs = SendGridNotification.objects.filter(sg_message_id=data[1]['sg_message_id'])
         self.assertEqual(qs.count(), 1)
         self.assertEqual(qs.first().sent_mail, sm2)
+
+    @override_settings(DATALAKE_STORAGE=None)
+    def test_datalake_storage_not_defined(self):
+        file_name = dump_raw_message_to_storage(b"test_me")
+        self.assertIsNone(file_name)
+
+    def test_datalake_storage(self):
+        body = b"test_me"
+        file_name = dump_raw_message_to_storage(body)
+        storage = LocalDataLakeStorage()
+        content = storage.open(file_name)
+        self.assertEqual(content.read(), body)
 
 
 class SendgridTrackingTestCase(TestCase):

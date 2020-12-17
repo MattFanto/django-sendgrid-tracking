@@ -13,7 +13,6 @@ from django_sendgrid_tracking.models import SG_EVENTS, SendGridNotification, Mai
 
 logger = logging.getLogger(__name__)
 
-datalake_storage = get_storage_class(import_path=settings.DATALAKE_STORAGE)()
 VALID_EVENTS = [x[0] for x in SG_EVENTS]
 
 
@@ -41,22 +40,35 @@ def process_sg_notification(sg_notification, file_name):
             sn.category_code.set(MailCategory.objects.filter(category_code__in=sg_notification['category']))
         else:
             logger.warning('No category in django_sendgrid_tracking:event_hooks, '
-                           'request body file_name: %s' % file_name)
+                           'Raw message content at: %s' % file_name if file_name else '(message not dumped you need to set DATALAKE_STORAGE)')
 
     except Exception as e:
         logger.error('Generic exception raised in django_sendgrid_tracking:event_hooks (%s) '
-                     'request body file_name: %s' % (e, file_name))
+                     'Raw message content at: %s' % (e, file_name if file_name else '(message not dumped you need to set DATALAKE_STORAGE)'))
+
+
+def dump_raw_message_to_storage(body):
+    datalake_storage_class = getattr(settings, 'DATALAKE_STORAGE', None)
+    if datalake_storage_class:
+        datalake_storage = get_storage_class(import_path=settings.DATALAKE_STORAGE)()
+        file_name = datetime.datetime.now().strftime("%Y%m%d-%H%M%S-%f") + '.json'
+        file = datalake_storage.open(file_name, 'wb')
+        file.write(body)
+        file.close()
+        logger.debug('Saved message at: %s' % file_name)
+        return file_name
+    else:
+        logger.debug('Raw message not saved')
+        return None
 
 
 @csrf_exempt
 @require_POST
 def event_hooks(request):
     if request.method == 'POST':
-        file_name = datetime.datetime.now().strftime("%Y%m%d-%H%M%S-%f") + '.json'
-        file = datalake_storage.open(file_name, 'wb')
-        file.write(request.body)
-        file.close()
+        logger.info('Received Sendgrid Hook request, processing event')
         # After save on datalake process event
+        file_name = dump_raw_message_to_storage(request.body)
         sg_notifications = json.loads(request.body)
         if type(sg_notifications) is not list:
             sg_notifications = [sg_notifications]
