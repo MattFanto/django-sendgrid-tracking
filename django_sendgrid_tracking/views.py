@@ -40,11 +40,15 @@ def process_sg_notification(sg_notification, file_name):
             sn.category_code.set(MailCategory.objects.filter(category_code__in=sg_notification['category']))
         else:
             logger.warning('No category in django_sendgrid_tracking:event_hooks, '
-                           'Raw message content at: %s' % file_name if file_name else '(message not dumped you need to set DATALAKE_STORAGE)')
+                           'Raw message content at: %s' % (
+                               file_name if file_name else '(message not dumped you need to set DATALAKE_STORAGE)')
+                           )
 
     except Exception as e:
         logger.error('Generic exception raised in django_sendgrid_tracking:event_hooks (%s) '
-                     'Raw message content at: %s' % (e, file_name if file_name else '(message not dumped you need to set DATALAKE_STORAGE)'))
+                     'Raw message content at: %s' % (
+                         e, file_name if file_name else '(message not dumped you need to set DATALAKE_STORAGE)')
+                     )
 
 
 def dump_raw_message_to_storage(body):
