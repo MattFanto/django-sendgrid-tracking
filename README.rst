@@ -1,7 +1,7 @@
 Django Sendgrid Tracking
 ========================
 
-|Travis| |codecov| |Python Versions| |PyPI Version| |MIT licensed|
+|Travis| |codecov| |Python Versions| |PyPI Version| |MIT licensed| |Read The Docs|
 
 
 **Sendgrid Mail tracking for Django, store sendgrid tracking info into django models.**
@@ -38,6 +38,15 @@ which requires the following in your `settings.py`:
     SENDGRID_API_KEY = os.environ["SENDGRID_API_KEY"]
 
 You can find more information and other settings `here <https://github.com/sklarsa/django-sendgrid-v5>`__
+
+In addition to that the DATALAKE_STORAGE allows you to dump in a file the raw message received from SendGrid for future analysis.
+You should set it as the path reference to a storage class (e.g. BotoS3 to dump into an S3 bucket)
+
+.. code:: python
+
+    DATALAKE_STORAGE = 'settings.storages.MyStorageClass'
+
+If not defined raw message won't be saved, DB objects for (e.g. notifications, ..) will be updated in any case.
 
 Install package
 ---------------
@@ -149,6 +158,9 @@ License
 
 .. _CONTRIBUTING: https://github.com/MattFanto/django-sendgrid-tracking/blob/master/CONTRIBUTING.md
 .. _The MIT License (MIT): https://github.com/MattFanto/django-sendgrid-tracking/blob/master/LICENSE.md
+.. |Read The Docs| image:: https://readthedocs.org/projects/django-sendgrid-tracking/badge/?version=latest
+    :target: https://django-sendgrid-tracking.readthedocs.io/en/latest/?badge=latest
+    :alt: Documentation Status
 .. |Travis| image:: https://travis-ci.org/MattFanto/django-sendgrid-tracking.svg?branch=master
     :target: https://travis-ci.org/MattFanto/django-sendgrid-tracking
 .. |codecov| image:: https://codecov.io/gh/MattFanto/django-sendgrid-tracking/branch/master/graph/badge.svg
